@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+        <%= title %>
+    </title>
+    <% include layout/head %>
+
+</head>
+
+<body>
+    <% include layout/nav %>
+        <div class="container">
+            <h1><%= title %></h1>
+            <% if (errors) { %>
+                <%= console.log(errors) %>
+                <% errors.forEach(function(error) { %>
+                <div class="alert alert-danger">
+                    <%= error.msg %>
+                </div>
+                <% }) %>
+            <% } %>
+
+            <form action="/categories/add" method="post">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>                
+                
+                <input type="submit" class="btn btn-primary" name="submit" value="Save">
+            </form>
+
+            <script src="/ckeditor/ckeditor.js"></script>
+            <script>
+                CKEDITOR.replace('body');
+            </script>
+
+            <% include layout/footer %>
+        </div>
+        <!-- /container -->
+</body>
+
+</html>
